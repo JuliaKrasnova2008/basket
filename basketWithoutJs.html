@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*main-style*/
+        @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+
+      .html {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        font-family: "Source Sans Pro", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 390px;
+        background-color: #fff;
+      }
+
+      img,
+      svg {
+        max-width: 100%;
+        height: auto;
+        background-color: transparent;
+        object-fit: cover;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /*.container {
+        max-width: 390px;
+        margin-right: auto;
+        margin-left: auto;
+        /*padding-right: 20px;
+        padding-left: 20px;
+      }*/
+
+      .reports {
+        display: block;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      .input {
+        margin: 0;
+        overflow: visible;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+      }
+
+      .visible-check {
+        position: relative;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        top: 5px;
+        background-color: #EDEDED;
+        border-radius: 5px;
+        /*vertical-align: middle;*/
+        transition: background-color;
+      }
+
+      .visible-check::before {
+        content: url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.0666 4.20013L1.6166 2.75013C1.49438 2.62791 1.34171 2.56969 1.1586 2.57546C0.975046 2.5808 0.822157 2.64457 0.699935 2.7668C0.577713 2.88902 0.516602 3.04457 0.516602 3.23346C0.516602 3.42235 0.577713 3.57791 0.699935 3.70013L2.59993 5.60013C2.72216 5.72235 2.87771 5.78346 3.0666 5.78346C3.25549 5.78346 3.41105 5.72235 3.53327 5.60013L7.3166 1.8168C7.43882 1.69457 7.49727 1.54169 7.49194 1.35813C7.48616 1.17502 7.42216 1.02235 7.29994 0.900131C7.17771 0.777908 7.02216 0.716797 6.83327 0.716797C6.64438 0.716797 6.48882 0.777908 6.3666 0.900131L3.0666 4.20013Z' fill='%23F9F9F9'/%3E%3C/svg%3E");
+        position: absolute;
+        top: -5px;
+        left: 4px;
+        width: 5px;
+        height: 5px;
+        opacity: 0;
+        transition: opacity;
+      }
+
+      .checkbox:checked+.visible-check::before {
+        opacity: 1;
+      }
+
+      .checkbox:checked~.visible-check {
+        background-color: #27AE60;
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #EDEDED;
+      }
+
+      .card__visible-check {
+        position: absolute;
+        top: 16px;
+        right: 0px;
+      }
+
+      .card__img-wrap {
+        width: 70px;
+        height: auto;
+        background-color: #777777;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-right: 12px;
+      }
+
+      .name {
+        display: inline-block;
+        max-width: 189px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 16px;
+        
+      }
+
+      .price {
+        margin-bottom: 4px;
+        color: #777777;
+      }
+
+      .btn {
+        width: 24px;
+        height: 24px;
+        border: none;
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23EDEDED'/%3E%3Cpath d='M8.66675 18C8.30008 18 7.9863 17.8696 7.72541 17.6087C7.46408 17.3473 7.33341 17.0333 7.33341 16.6667V8C7.14453 8 6.98608 7.93622 6.85808 7.80867C6.73053 7.68067 6.66675 7.52222 6.66675 7.33333C6.66675 7.14444 6.73053 6.986 6.85808 6.858C6.98608 6.73044 7.14453 6.66667 7.33341 6.66667H10.0001C10.0001 6.47778 10.0641 6.31933 10.1921 6.19133C10.3196 6.06378 10.4779 6 10.6667 6H13.3334C13.5223 6 13.6807 6.06378 13.8087 6.19133C13.9363 6.31933 14.0001 6.47778 14.0001 6.66667H16.6667C16.8556 6.66667 17.0139 6.73044 17.1414 6.858C17.2694 6.986 17.3334 7.14444 17.3334 7.33333C17.3334 7.52222 17.2694 7.68067 17.1414 7.80867C17.0139 7.93622 16.8556 8 16.6667 8V16.6667C16.6667 17.0333 16.5363 17.3473 16.2754 17.6087C16.0141 17.8696 15.7001 18 15.3334 18H8.66675ZM8.66675 8V16.6667H15.3334V8H8.66675ZM12.0001 13.2667L13.2667 14.5333C13.4001 14.6556 13.5585 14.7167 13.7421 14.7167C13.9252 14.7167 14.0779 14.6556 14.2001 14.5333C14.3334 14.4 14.4001 14.2416 14.4001 14.058C14.4001 13.8749 14.3334 13.7222 14.2001 13.6L12.9334 12.3333L14.2001 11.0667C14.3334 10.9333 14.4001 10.7749 14.4001 10.5913C14.4001 10.4082 14.3334 10.2556 14.2001 10.1333C14.0779 10 13.9252 9.93333 13.7421 9.93333C13.5585 9.93333 13.4001 10 13.2667 10.1333L12.0001 11.4L10.7334 10.1333C10.6112 10 10.4585 9.93333 10.2754 9.93333C10.0919 9.93333 9.93341 10 9.80008 10.1333C9.67786 10.2556 9.61675 10.4082 9.61675 10.5913C9.61675 10.7749 9.67786 10.9333 9.80008 11.0667L11.0667 12.3333L9.80008 13.6C9.67786 13.7222 9.61675 13.8749 9.61675 14.058C9.61675 14.2416 9.67786 14.4 9.80008 14.5333C9.93341 14.6556 10.0919 14.7167 10.2754 14.7167C10.4585 14.7167 10.6112 14.6556 10.7334 14.5333L12.0001 13.2667Z' fill='%23EB5757'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+      }
+
+      button {
+        border-style: none;
+        background-color: transparent;
+      }
+
+      .card__info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .request {
+        max-width: 500px;
+        position: sticky;
+        bottom: 0;
+        /*position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;*/
+        margin-right: auto;
+        margin-left: auto;
+        padding: 25px 20px;
+        background-color: #fff;
+        box-shadow: 0px -5px 10px -1px rgba(0, 0, 0, 0.25);
+        border-radius: 20px 20px 0px 0px;
+      }
+
+      .btn-request {
+        width: 100%;
+        padding: 7px;
+        font-size: 18px;
+        line-height: 16px;
+        color: #fff;
+        background-color: #007AFE;
+        border-radius: 100px;
+      }
+
+      .unactive-first {
+        display: none;
+        width: 100%;
+        padding: 7px;
+        font-size: 18px;
+        line-height: 16px;
+        color: #CCCCCC;
+        background-color: #EDEDED;
+        border-radius: 100px;
+      }
+
+      .unactive-second {
+        display: none;
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        line-height: 16px;
+        color: #CCCCCC;
+        background-color: #EDEDED;
+        border-radius: 100px;
+      }
+
+      .basket-img {
+        width: 64px;
+        height: 64px;
+        
+      }
+
+      .basket-null {
+        display: block;
+        padding-top: 109px;
+        padding-bottom: 109px;
+        text-align: center;
+      }
+
+      .big-container {
+        max-width: 390px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+    </style>
+</head>
+<body>
+    
+  <div class="big-container">
+    <div class="container">
+        <div class="top">
+            <span class="reports">Отчетов: <span class="sum-reports">0</span></span>
+            <label class="check-wrap">
+                <span class="all" style="margin-right: 8px">Выбрать все</span>
+                <input class="visually-hidden checkbox" type="checkbox" onclick="selectAll(event)">
+                <span class="visible-check visible-check__all"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="items container">
+    <!--контейнер для карточек-->
+    </div>
+  </div>
+
+    <div class="request">
+        <button class="btn-request active">Оформить заявку<br><span style="font-size: 12px">Отчетов: </span><span class="sum-request" style="font-size: 12px"></span>, <span class="sum-all" style="font-size: 12px"></span><span style="font-size: 13px"> &#8381</span></button>
+
+        <button class="btn-request unactive-first">Оформить заявку<br><span style="font-size: 12px">Отчеты не выбраны</span></button> <!--неактивная 1 экран-->
+
+        <button class="btn-request unactive-second">Оформить заявку</button> <!--неактивная 4 экран-->
+    </div>
+
+        <script src="./script.js">
+       
+        </script>
+</body>
+</html>
